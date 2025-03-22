@@ -1,39 +1,95 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { Slot, Stack } from "expo-router";
+import { useFonts } from "expo-font";
+import { StatusBar } from "expo-status-bar";
+import { Platform, useColorScheme } from "react-native";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+import fonts from "@/assets/fonts";
+import SplashScreen from "@/components/SplashScreen";
+import {
+    DarkTheme,
+    DefaultTheme,
+    ThemeProvider,
+} from "@react-navigation/native";
+import { useEffect } from "react";
+import * as NavigationBar from "expo-navigation-bar";
+import { Colors } from "@/constants/Colors";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+    const colorScheme = useColorScheme();
+    const [loaded] = useFonts(fonts);
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
+    useEffect(() => {
+        NavigationBar.setBackgroundColorAsync(
+            Colors[colorScheme || "light"].surface
+        );
+        NavigationBar.setButtonStyleAsync(
+            colorScheme === "light" ? "dark" : "light"
+        );
+    }, [colorScheme]);
+
+    if (!loaded) {
+        return <SplashScreen />;
     }
-  }, [loaded]);
 
-  if (!loaded) {
-    return null;
-  }
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    return (
+        <ThemeProvider
+            value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+        >
+            <Slot />
+            {/* <Stack>
+                <Stack.Screen name="index" options={{ headerShown: false }} />
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen name="profile" options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="auth/login"
+                    options={{ headerShown: false }}
+                />
+            </Stack> */}
+            <StatusBar style="auto" />
+        </ThemeProvider>
+    );
 }
+
+// import { Slot } from "expo-router";
+// import { useFonts } from "expo-font";
+// import { StatusBar } from "expo-status-bar";
+// import { useColorScheme } from "react-native";
+// import {
+//     DarkTheme,
+//     DefaultTheme,
+//     ThemeProvider,
+// } from "@react-navigation/native";
+// import { useEffect } from "react";
+// import * as NavigationBar from "expo-navigation-bar";
+// import { Colors } from "@/constants/Colors";
+// import SplashScreen from "@/components/SplashScreen";
+// import fonts from "@/assets/fonts";
+
+// // 🔹 Separate component to handle loading state
+// function RootWrapper() {
+//     const colorScheme = useColorScheme() || "light";
+
+//     useEffect(() => {
+//         NavigationBar.setBackgroundColorAsync(Colors[colorScheme].surface);
+//     }, [colorScheme]);
+
+//     return (
+//         <ThemeProvider
+//             value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+//         >
+//             <Slot />
+//             <StatusBar style="auto" />
+//         </ThemeProvider>
+//     );
+// }
+
+// export default function RootLayout() {
+//     const [fontsLoaded] = useFonts(fonts);
+
+//     // 🔥 FIX: Don't change hook order on re-renders
+//     if (!fontsLoaded) {
+//         return <SplashScreen />;
+//     }
+
+//     return <RootWrapper />;
+// }
