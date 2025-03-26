@@ -1,12 +1,21 @@
-import { View, Text } from "react-native";
+import { View, Text, useColorScheme } from "react-native";
 import React from "react";
+import { GlobalStyle } from "@/styles/GlobalStyle";
+import { Colors } from "@/constants/Colors";
+import FileUpload from "@/components/ui/FileUpload";
 
-const UploadPage = () => {
+const Upload = () => {
+    const colorScheme = useColorScheme();
     return (
-        <View>
-            <Text>UploadPage</Text>
+        <View
+            style={[
+                GlobalStyle.container,
+                { backgroundColor: Colors[colorScheme ?? "light"].background },
+            ]}
+        >
+            <FileUpload />
         </View>
     );
 };
 
-export default UploadPage;
+export default Upload;

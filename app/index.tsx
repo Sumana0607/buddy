@@ -12,7 +12,7 @@ export default function Index() {
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
-            router.replace("/(tabs)");
+            router.replace("/(tabs)/(toptabs)");
         }, 1000);
 
         return () => clearTimeout(timeoutId);

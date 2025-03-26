@@ -36,7 +36,13 @@ export default function RootLayout() {
             value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
             <Slot />
-            {/* <Stack>
+            <StatusBar style="auto" />
+        </ThemeProvider>
+    );
+}
+
+{
+    /* <Stack>
                 <Stack.Screen name="index" options={{ headerShown: false }} />
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen name="profile" options={{ headerShown: false }} />
@@ -44,10 +50,7 @@ export default function RootLayout() {
                     name="auth/login"
                     options={{ headerShown: false }}
                 />
-            </Stack> */}
-            <StatusBar style="auto" />
-        </ThemeProvider>
-    );
+            </Stack> */
 }
 
 // import { Slot } from "expo-router";

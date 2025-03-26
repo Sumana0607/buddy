@@ -4,6 +4,7 @@ import { GlobalStyle } from "@/styles/GlobalStyle";
 import ThemeText from "@/components/global/TheamText";
 import { Colors } from "@/constants/Colors";
 import { dvw } from "@/constants/Dimension";
+import CategoryScreen from "@/screens/CategoryScreen";
 
 const Categories = () => {
     const colorScheme = useColorScheme();
@@ -15,7 +16,7 @@ const Categories = () => {
                 { backgroundColor: themeColor.background },
             ]}
         >
-            <ThemeText>Categories </ThemeText>
+            <CategoryScreen />
         </View>
     );
 };

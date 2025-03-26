@@ -1,4 +1,11 @@
-import { View, Text, useColorScheme, Image, StyleSheet } from "react-native";
+import {
+    View,
+    Text,
+    useColorScheme,
+    StyleSheet,
+    KeyboardAvoidingView,
+    Platform,
+} from "react-native";
 import React from "react";
 import { GlobalStyle } from "@/styles/GlobalStyle";
 import { Colors } from "@/constants/Colors";
@@ -13,6 +20,11 @@ const Login = () => {
     const colorScheme = useColorScheme();
     const themeColor = Colors[colorScheme ?? "light"];
     return (
+        // <KeyboardAvoidingView
+        //     style={{ flex: 1 }}
+        //     behavior={Platform.OS === "ios" ? "padding" : "height"}
+        //     keyboardVerticalOffset={200}
+        // >
         <View
             style={[
                 GlobalStyle.container,
@@ -40,6 +52,7 @@ const Login = () => {
                 </ThemeText>
 
                 {/* login form  */}
+
                 <LoginForm />
 
                 {/* seperator  */}
@@ -99,6 +112,7 @@ const Login = () => {
                 </Text>
             </View>
         </View>
+        // </KeyboardAvoidingView>
     );
 };
 

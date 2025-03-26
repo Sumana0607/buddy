@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import SearchScreen from "@/screens/SearchScreen";
+import { GlobalStyle } from "@/styles/GlobalStyle";
 
 const Search = () => {
     return (
-        <View>
-            <Text>Search</Text>
+        <View style={[GlobalStyle.container]}>
+            <SearchScreen />
         </View>
     );
 };

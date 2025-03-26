@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { GlobalStyle } from "@/styles/GlobalStyle";
-import DiaryScreen from "@/screens/DiaryScreen";
+import ThemeText from "@/components/global/TheamText";
 
-export default function Diary() {
+export default function DiaryScreen() {
     return (
         <View style={[GlobalStyle.container]}>
-            <DiaryScreen />
+            <ThemeText>DiaryScreen</ThemeText>
         </View>
     );
 }

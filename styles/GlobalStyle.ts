@@ -6,3 +6,6 @@ export const GlobalStyle = StyleSheet.create({
         flex: 1,
     },
 });
+
+// "softwareKeyboardLayoutMode": "pan",
+// "package": "dev.expo.keyboard.guide"

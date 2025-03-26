@@ -4,6 +4,8 @@ import {
     StyleSheet,
     TouchableOpacity,
     useColorScheme,
+    KeyboardAvoidingView,
+    Platform,
 } from "react-native";
 import CustomInput from "@/components/ui/CustomInput";
 import { Colors } from "@/constants/Colors";
@@ -30,8 +32,17 @@ const LoginForm = () => {
     };
 
     return (
+        // <KeyboardAvoidingView
+        //     style={{ flex: 1 }}
+        //     behavior={Platform.OS === "ios" ? "padding" : undefined}
+        //     keyboardVerticalOffset={100}
+        // >
         <View
-            style={{ paddingHorizontal: 20, paddingTop: 70, marginBottom: 10 }}
+            style={{
+                paddingHorizontal: 20,
+                paddingTop: 70,
+                marginBottom: 10,
+            }}
         >
             <CustomInput
                 label="Email"
@@ -59,6 +70,7 @@ const LoginForm = () => {
                 </ThemeText>
             </TouchableOpacity>
         </View>
+        // </KeyboardAvoidingView>
     );
 };
 
