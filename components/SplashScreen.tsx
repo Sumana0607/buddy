@@ -5,18 +5,22 @@ import logo from "@/assets/images/logo.png";
 import SplashStyle from "@/styles/SplashStyles";
 import ThemeText from "@/components/global/TheamText";
 import { useEffect } from "react";
-import { router } from "expo-router";
+import { router, useRootNavigationState } from "expo-router";
 
 export default function SplashScreen() {
     const theme = useColorScheme() ?? "light";
+    // const rootNavigationState = useRootNavigationState();
+    // const navigatorReady = rootNavigationState?.key != null;
 
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            router.replace("/(tabs)/(toptabs)");
-        }, 1000);
+    // useEffect(() => {
+    //     const timeoutId = setTimeout(() => {
+    //         if (navigatorReady) {
+    //             router.replace("/(tabs)");
+    //         }
+    //     }, 1000);
 
-        return () => clearTimeout(timeoutId);
-    }, []);
+    //     return () => clearTimeout(timeoutId);
+    // }, []);
 
     return (
         <View

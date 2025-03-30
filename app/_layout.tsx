@@ -13,14 +13,19 @@ import {
 import { useEffect } from "react";
 import * as NavigationBar from "expo-navigation-bar";
 import { Colors } from "@/constants/Colors";
+import * as ExpoSplashScreen from "expo-splash-screen";
 
 export default function RootLayout() {
     const colorScheme = useColorScheme();
     const [loaded] = useFonts(fonts);
 
     useEffect(() => {
+        ExpoSplashScreen.hideAsync();
+    }, []);
+
+    useEffect(() => {
         NavigationBar.setBackgroundColorAsync(
-            Colors[colorScheme || "light"].surface
+            Colors[colorScheme || "light"].background
         );
         NavigationBar.setButtonStyleAsync(
             colorScheme === "light" ? "dark" : "light"

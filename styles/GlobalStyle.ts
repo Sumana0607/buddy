@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const GlobalStyle = StyleSheet.create({
     container: {
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
         flex: 1,
     },
 });
