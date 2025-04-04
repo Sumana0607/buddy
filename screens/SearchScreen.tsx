@@ -1,388 +1,162 @@
-import { StyleSheet, Text, View, useColorScheme,ScrollView,Image, TextInput } from "react-native";
-import React from "react";
-import { GlobalStyle } from "@/styles/GlobalStyle";
-import ThemeText from "@/components/global/TheamText";
+import React from 'react';
+import { View, Text, Image, StyleSheet, ScrollView, useColorScheme } from 'react-native';
 import { Colors } from "@/constants/Colors";
-import  {useState} from "react";
-import CustomInput from "@/components/ui/CustomInput";
-import AntDesign from '@expo/vector-icons/AntDesign';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import  book from "/app/assets/images/book.jpeg";
+import AntDesign from '@expo/vector-icons/AntDesign'; 
 
+export default function SearchScreen() {
+  const colorScheme = useColorScheme();
+  const themeColor = Colors[colorScheme ?? "light"];
 
+  const books = [
+    {
+      image: {uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY6m4L92Nc5ci_goy7928WoAgBfl5Sn5vyWw&s"},
+      name: 'C ',
+      description: 'Authentic Guide to C programmimg',
+      author: ' Yashavant Kanethkar',
+      date: '2023-04-01',
+      rating: 4.5,
+    },
+    {
+      image: { uri :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwftdwzSOyRt9okVxJBEvaCKH7Bp3n9mPC1w&"},
+      name: 'Let Us C',
+      description: 'From the beginning to pro sixth edition',
+      author: 'Ivor horton',
+      date: '2023-03-15',
+      rating: 4.0,
+    },
+    {
+      image: {uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN8iyuNyKoBa7jzoOY68Bi1LYgl3c9cR0bNg&s"},
+      name: 'Python',
+      description: 'Introduction to computation and programmimg using Python',
+      author: 'Jhon V.Guttak',
+      date: '2023-03-20',
+      rating: 4.2,
+    },
+    {
+      image: {uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpKEIeqZ4I0XTZL2KDuVo4q_FqgrtHgg31Uw&s"},
+      name: 'Javascript',
+      description: 'javascript language for absolute beginners',
+      author: 'Willium Sulivan',
+      date: '2023-03-25',
+      rating: 4.3,
+    },
+    {
+      image:{ uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdAWrjRl_ukTlrgXMVRDQqlF52GhR09ISWSw&s"},
+      name: 'Algebra',
+      description: 'Abstact & Linear, Fifth Edition',
+      author: 'Sk Mapa',
+      date: '2023-03-30',
+      rating: 4.4,
+    },
+  ];
 
-
-
-
-export default function SearcgScreen() {
-   const colorScheme = useColorScheme();
-      const themeColor = Colors[colorScheme ?? "light"];
-      const [searchTrim, setSearchTrim] = useState("");
-      const updateSearch = (query: string) => {
-        setSearchTrim(query);
-      }
-    return (
-      <View style={styles.header}>
-        <View style={styles.searchlogo}>
-        <FontAwesome name="search" size={24} color="#4caf90" />
-        <TextInput
-        placeholder="search"
-        keyboardType="default"
-        value={searchTrim}
-        onChangeText={setSearchTrim}
-        cursorColor={themeColor.surface}
-        />
-        </View>
-
-                <ScrollView style={styles.container}>
-                {/* Content Section */}
-                <View style={styles.contentContainer}>
-                  <Image/>
-                  <Image
-                    source={require('../assets/images/book.jpeg')}
-                    style={styles.image1}
-                  />
-                  <View style={styles.textAndIcons}>
-                    <View style={styles.textContainer1}>
-                      <ThemeText style={styles.sectionText1}>Learn C++</ThemeText>
-                      <ThemeText style={styles.sectionText2}>Balaguruswami</ThemeText>
-                    </View>
-                    <View style={styles.iconContainer}>
-                    <AntDesign name="heart" size={24} color="#4caf90" style={styles.icon}/>
-                    <FontAwesome name="commenting" size={24} color="#c0c0c0"  style={styles.icon} />
-                      <Image/>
-                    </View>
-                  </View>
-                </View>
-                <View style={styles.contentContainer2}>
-                <Image
-                    source={require('../assets/images/dotnet.jpeg')}
-                    style={styles.image2}
-                  />
-                  <View style={styles.textAndIcons2}>
-                    <View style={styles.textContainer1}>
-                      <ThemeText style={styles.sectionText3}>Learn .NET</ThemeText>
-                      <ThemeText style={styles.sectionText4}>Pramod Singh</ThemeText>
-                    </View>
-                    <View style={styles.iconContainer2}>
-                    <AntDesign name="heart" size={24} color="#4caf90" style={styles.icon}/>
-                    <FontAwesome name="commenting" size={24} color="#c0c0c0"  style={styles.icon} />
-                      <Image/>
-                    </View>
-                  </View>
-                </View>
-                <View style={styles.contentContainer2}>
-                <Image
-                    source={require('../assets/images/story.png')}
-                    style={styles.image3}
-                  />
-                  <View style={styles.textAndIcons3}>
-                    <View style={styles.textContainer3}>
-                      <ThemeText style={styles.sectionText5}>Learn War and Peace</ThemeText>
-                      <ThemeText style={styles.sectionText6}>Leo Tolstoy</ThemeText>
-                    </View>
-                    <View style={styles.iconContainer3}>
-                    <AntDesign name="heart" size={24} color="#4caf90" style={styles.icon}/>
-                    <FontAwesome name="commenting" size={24} color="#c0c0c0"style={styles.icon} />
-                      <Image/>
-                    </View>
-                  </View>
-                </View>
-                <View style={styles.contentContainer4}>
-                <Image
-                    source={require('../assets/images/baby.jpeg')}
-                    style={styles.image4}
-                  />
-                  <View style={styles.textAndIcons4}>
-                    <View style={styles.textContainer4}>
-                      <ThemeText style={styles.sectionText7}>Learn As you  Like it</ThemeText>
-                      <ThemeText style={styles.sectionText8}>Willam Shakespeare</ThemeText>
-                    </View>
-                    <View style={styles.iconContainer4}>
-                    <AntDesign name="heart" size={24} color="#4caf90" style={styles.icon}/>
-                    <FontAwesome name="commenting" size={24} color="#c0c0c0"  style={styles.icon} />
-                      <Image/>
-                    </View>
-                  </View>
-                </View>
-                <View style={styles.contentContainer5}>
-                <Image
-                    source={require('../assets/images/detective.jpeg')}
-                    style={styles.image5}
-                  />
-                  <View style={styles.textAndIcons5}>
-                    <View style={styles.textContainer5}>
-                      <ThemeText style={styles.sectionText9}>Learn Havana Red</ThemeText>
-                      <ThemeText style={styles.sectionText10}>Leonardo Padura</ThemeText>
-                    </View>
-                    <View style={styles.iconContainer5}>
-                    <AntDesign name="heart" size={24} color="#4caf90"  style={styles.icon}/>
-                      <FontAwesome name="commenting" size={24} color="#c0c0c0"   style={styles.icon} />
-                      <Image/>
-                    </View>
-                  </View>
-                </View>
-              </ScrollView>
+  return (
+    <ScrollView style={[styles.container, { backgroundColor: themeColor.background }]}>
+      {books.map((book, index) => (
+        <View key={index} style={[styles.bookContainer, { backgroundColor: themeColor.surface }]}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={{ uri: book.image.uri }} 
+              style={[styles.bookImage, { backgroundColor: themeColor.surface }]}
+            />
+            <View style={styles.likeIcon}>
+              <AntDesign name="heart" size={24} color={themeColor.primaryVariant} />
+            </View>
+            <View style={styles.ratingIcon}>
+              <AntDesign name="star" size={24} color={themeColor.primaryVariant} />
+              <Text style={styles.ratingText}>{book.rating}</Text>
+            </View>
+          </View>
+          <View style={[styles.textContainer, { backgroundColor: themeColor.surface }]}>
+            <Text style={[styles.bookName, { color: themeColor.textPrimary }]}>{book.name}</Text>
+            <Text style={[styles.bookDescription, { color: themeColor.textPrimary }]}>{book.description}</Text>
+            <View style={styles.footer}>
+              <Text style={[styles.author, { color: themeColor.textPrimary }]}>{book.author}</Text>
+              <View style={styles.dateContainer}>
+                <AntDesign name="calendar" size={18} color={themeColor.textPrimary} />
+                <Text style={[styles.date, { color: themeColor.textPrimary }]}>{book.date}</Text>
               </View>
-            );
-          };
-          
+            </View>
+          </View>
+        </View>
+      ))}
+    </ScrollView>
+  );
+}
 
 const styles = StyleSheet.create({
-  header: {        //1st
-    flex:1,
-    backgroundColor:'#e8f5f2',
-    borderRadius: 8,
-  },
-  searchlogo:{
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: "white",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    margin: 10,
-  },
-  icon: {
-    marginRight: 10,
-  },
-  input: {
-    flex:  1,
-    height: 40,
-    fontSize: 16,
-  },
   container: {
     flex: 1,
-    padding: 10,
-    backgroundColor:"#FAFAFA",
   },
-  contentContainer: {
-    margin: 20,
-    padding: 15,
-    backgroundColor: '#e8f5f2',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 2,
+  bookContainer: {
+    marginBottom: 20,
+    marginHorizontal: 10,
+    backgroundColor: '#fff',
+    borderRadius: 15,
+    overflow: 'hidden',
   },
-  image1: {
+  imageContainer: {
+    position: 'relative',
     width: "100%",
-    height: 250,
-    borderRadius: 25,
-    marginBottom: 10,
-    resizeMode: 'cover',
-    alignContent: 'center',
-    marginRight: 10,
-    
   },
-  textAndIcons: {
+  bookImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 10,
+  },
+  likeIcon: {
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    backgroundColor: '#00000080',
+    padding: 5,
+    borderRadius: 15,
+  },
+  ratingIcon: {
+    position: 'absolute',
+    left: 10,
+    bottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#00000080',
+    padding: 5,
+    borderRadius: 15,
+  },
+  ratingText: {
+    color: '#fff',
+    marginLeft: 5,
+    fontSize: 16,
+  },
+  textContainer: {
+    padding: 15,
+  },
+  bookName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  bookDescription: {
+    fontSize: 16,
+    color: '#555',
+    marginBottom: 15,
+  },
+  footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 12,
-    backgroundColor:"#f5fffa",
-    borderRadius: 5,
   },
-  textContainer1: {
-    flex: 1,
-  },
-  sectionText1: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: 5,
-  },
-  sectionText2: {
+  author: {
     fontSize: 16,
-    color: '#7f8c8d',
+    fontWeight: '500',
   },
-  iconContainer: {
+  dateContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  icon1: {
-    marginLeft: 15,
-  },
-  contentContainer2: {     //2nd
-    margin: 20,
-    padding: 15,
-    backgroundColor: '#e8f5f2',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 2,
-  },
-  image2: {
-    width: "100%",
-    height: 250,
-    borderRadius: 10,
-    marginBottom: 10,
-    resizeMode: 'cover',
-  },
-  textAndIcons2: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 12,
-    backgroundColor: "#f5fffa",
-    borderRadius: 5,
-  },
-  textContainer2: {
-    flex: 1,
-  },
-  sectionText3: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: 5,
-  },
-  sectionText4: {
+  date: {
     fontSize: 16,
-    color: '#7f8c8d',
+    fontWeight: '400',
+    color: '#999',
+    marginLeft: 5,
   },
-  iconContainer2: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  icon2: {
-    marginLeft: 15,
-  },
-  contentContainer3: {     //3rd
-    margin: 20,
-    padding: 15,
-    backgroundColor: '#e8f5f2',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 2,
-  },
-  image3: {
-    width: "100%",
-    height: 250,
-    borderRadius: 10,
-    marginBottom: 10,
-    resizeMode: 'cover',
-  },
-  textAndIcons3: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 12,
-    backgroundColor: "#f5fffa",
-    borderRadius: 5,
-  },
-  textContainer3: {
-    flex: 1,
-  },
-  sectionText5: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: 5,
-  },
-  sectionText6: {
-    fontSize: 16,
-    color: '#7f8c8d',
-  },
-  iconContainer3: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  icon3: {
-    marginLeft: 15,
-  },
-  contentContainer4: {     //4rd
-    margin: 20,
-    padding: 15,
-    backgroundColor: '#e8f5f2',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 2,
-  },
-  image4: {
-    width: "100%",
-    height: 250,
-    borderRadius: 10,
-    marginBottom: 10,
-    resizeMode: 'cover',
-  },
-  textAndIcons4: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 12,
-    backgroundColor: "#f5fffa",
-    borderRadius: 5,
-  },
-  textContainer4: {
-    flex: 1,
-  },
-  sectionText7: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: 5,
-  },
-  sectionText8: {
-    fontSize: 16,
-    color: '#7f8c8d',
-  },
-  iconContainer4: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  icon4: {
-    marginLeft: 15,
-  },
-  
-  contentContainer5: {     //5rd
-    margin: 20,
-    padding: 15,
-    backgroundColor: '#e8f5f2',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 2,
-  },
-  image5: {
-    width: "100%",
-    height: 250,
-    borderRadius: 10,
-    marginBottom: 10,
-    resizeMode: 'cover',
-  },
-  textAndIcons5: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 12,
-    backgroundColor: "#f5fffa",
-    borderRadius: 5,
-  },
-  textContainer5: {
-    flex: 1,
-  },
-  sectionText9: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: 5,
-  },
-  sectionText10: {
-    fontSize: 16,
-    color: '#7f8c8d',
-  },
-  iconContainer5: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  icon5: {
-    marginLeft: 15,
-  },
-
 });
